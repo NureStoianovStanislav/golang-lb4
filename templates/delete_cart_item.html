@@ -1,0 +1,16 @@
+{{define "content"}}
+<h1 class="text-2xl font-bold mb-4">Delete Cart Item</h1>
+<form action="/delete-cart-item" method="post">
+  <input type="hidden" name="cart_item_id" value="{{.ID}}" />
+  <p>
+    Are you sure you want to remove <strong>{{.ProductName}}</strong> from your
+    cart?
+  </p>
+  <button
+    type="submit"
+    class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+  >
+    Delete
+  </button>
+</form>
+{{end}}

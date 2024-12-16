@@ -1,0 +1,40 @@
+{{define "content"}}
+<h1>Catalog</h1>
+<ul class="space-y-4">
+  {{range .}}
+  <li>
+    <span class="font-bold">{{.Name}}</span> - ${{.Price}}
+    <form action="/cart" method="post" style="display: inline">
+      <input type="hidden" name="product_id" value="{{.ID}}" />
+      <input
+        type="number"
+        name="quantity"
+        value="1"
+        min="1"
+        class="border rounded px-2 w-16"
+      />
+      <button
+        type="submit"
+        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+      >
+        Add to Cart
+      </button>
+    </form>
+    <a
+      href="/update-product?id={{.ID}}"
+      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      >Update</a
+    >
+    <form action="/delete-product" method="post" style="display: inline">
+      <input type="hidden" name="product_id" value="{{.ID}}" />
+      <button
+        type="submit"
+        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+      >
+        Delete
+      </button>
+    </form>
+  </li>
+  {{end}}
+</ul>
+{{end}}
